@@ -1,0 +1,6 @@
+[package]
+name = "Angelfish"
+version = "0.1.0"
+authors = ["Rsplwe <zrh@zrhdwz.cn>"]
+
+[dependencies]
