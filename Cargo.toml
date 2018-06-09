@@ -1,5 +1,5 @@
 [package]
-name = "Angelfish"
+name = "angelfish"
 
 # When releasing to crates.io:
 # - Create "v0.x.x" git tag.
@@ -7,7 +7,7 @@ version = "0.0.0"
 authors = ["Rsplwe <zrh@zrhdwz.cn>"]
 # licence = ?
 readme = "README.md"
-repository = "https://github.com/BirsTech/Angelfish"
+repository = "https://github.com/BirsTech/angelfish"
 description = """
 A fast, unique and flexible server structure using Rust for Minecraft
 both bedrock and java versions.
@@ -18,4 +18,3 @@ members = [
 ]
 
 [dependencies]
-tokio = "0.1"
