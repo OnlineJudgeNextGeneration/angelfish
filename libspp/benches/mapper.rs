@@ -14,9 +14,10 @@ fn mapper_define(b: &mut Bencher) {
 
 #[bench]
 fn mapper_get(b: &mut Bencher) {
-    let mut mapper = libspp::mapper::new();
+    let mapper = libspp::mapper::new();
     b.iter(|| {
-        mapper.define_string_id("test");
+        mapper.string_to_integer("test");
+        mapper.integer_to_string(0);
     })
 }
 
