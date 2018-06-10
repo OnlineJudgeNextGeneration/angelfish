@@ -13,8 +13,4 @@ A fast, unique and flexible server structure using Rust for Minecraft
 both bedrock and java versions.
 """
 
-members = [
-    "libspp",
-]
-
 [dependencies]
