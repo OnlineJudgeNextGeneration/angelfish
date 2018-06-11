@@ -36,7 +36,7 @@ use tokio::prelude::*;
 use libspp::prelude::*;
 use std::io;
 
-fn new_spp_handle<'a, R, W>(reader: R, writer: W) -> SppHandle<R, W>
+fn new_spp_handle<'a, R, W>(reader: R, writer: W) -> SppHandle<'a, R, W>
     where R: AsyncRead,
           W: AsyncWrite {
     SppHandle {
