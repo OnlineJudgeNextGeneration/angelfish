@@ -11,12 +11,12 @@ const PK_STATE_STRING: u8 = 0x01;
 const PK_STATE_INTEGER: u8 = 0x02;
 
 #[derive(Eq, PartialEq, Debug)]
-pub struct Pk{
+pub struct SppMessage {
     pub identifier: String,
     pub payload: Vec<u8>
 }
 
-pub fn serialize(pk: &Pk, mapper: &SppMapper, ans: &mut BytesMut) {
+pub fn serialize(pk: &SppMessage, mapper: &SppMapper, ans: &mut BytesMut) {
     ans.extend_from_slice(&MAGIC);
     match mapper.string_to_integer(&pk.identifier) {
         Some(id) => {
@@ -67,7 +67,7 @@ macro_rules! ensure_length {
 }
 
 pub fn deserialize(mapper: &SppMapper, cur: &mut io::Cursor<Bytes>)
-    -> Result<Pk, DeserializeError> {
+    -> Result<SppMessage, DeserializeError> {
     if !validate_magic(cur) {
         return Err(DeserializeError::Magic);
     }
@@ -105,7 +105,7 @@ pub fn deserialize(mapper: &SppMapper, cur: &mut io::Cursor<Bytes>)
     for _ in 0..len {
         payload.push(cur.get_u8());
     }
-    let pk = Pk {
+    let pk = SppMessage {
         identifier: string_id,
         payload,
     };

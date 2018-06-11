@@ -29,18 +29,29 @@
 extern crate tokio;
 extern crate futures;
 extern crate bytes;
+extern crate libspp;
 
 use tokio::net::{TcpListener};
 use tokio::prelude::*;
-use tokio::prelude::Stream;
+use libspp::prelude::*;
+use std::io;
 
-#[derive(Debug)]
-pub struct SppHandle<R, W> {
-    reader: Option<R>,
-    writer: Option<W>
+fn new_spp_handle<'a, R, W>(reader: R, writer: W) -> SppHandle<R, W>
+    where R: AsyncRead,
+          W: AsyncWrite {
+    SppHandle {
+        reader,
+        writer,
+        mapper: libspp::mapper::new(),
+    }
 }
 
-use std::io;
+#[derive(Debug)]
+pub struct SppHandle<'a, R, W> {
+    reader: Option<R>,
+    writer: Option<W>,
+    mapper: SppMapper<'a>
+}
 
 impl<R, W> Future for SppHandle<R, W>
     where R: AsyncRead,

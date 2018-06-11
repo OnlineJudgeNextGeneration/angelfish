@@ -1,12 +1,12 @@
 extern crate libspp;
 extern crate bytes;
 
-use libspp::msg::Pk;
+use libspp::msg::SppMessage;
 use bytes::*;
 
 #[test]
 fn test_serialize() {
-    let pk = Pk {
+    let pk = SppMessage {
         identifier: String::from("ec:gui_define"),
         payload: vec![0xea, 0x5e, 0xca, 0x71, 0x02],
     };
@@ -22,7 +22,7 @@ fn test_serialize() {
 }
 
 #[cfg(test)]
-fn test_encode_decode(a: Pk, b: std::vec::Vec<u8>) {
+fn test_encode_decode(a: SppMessage, b: std::vec::Vec<u8>) {
     let mapper = libspp::mapper::new();
     let mut ans = BytesMut::new();
     libspp::msg::serialize(&a, &mapper, &mut ans);

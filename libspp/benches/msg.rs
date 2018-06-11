@@ -12,7 +12,7 @@ fn encode(b: &mut Bencher) {
     let mapper = libspp::mapper::new();
     b.iter(|| {
         let mut ans = BytesMut::new();
-        let pk = Pk {
+        let pk = SppMessage {
             identifier: String::from("ec:gui_define"),
             payload: vec![0xea, 0x5e, 0xca, 0x71, 0x02],
         };
