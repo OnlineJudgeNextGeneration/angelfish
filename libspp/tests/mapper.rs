@@ -2,7 +2,7 @@ extern crate libspp;
 
 #[test]
 fn test_mapper() {
-    let mut mapper = libspp::mapper::new();
+    let mut mapper = libspp::mapper::SppMapper::new();
     ["hi", "hello"].iter().for_each(
         |e| mapper.define_string_id(e));
     let hello = mapper.string_to_integer("hello");

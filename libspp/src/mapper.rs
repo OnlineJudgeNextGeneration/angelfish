@@ -1,16 +1,18 @@
 extern crate bimap;
 use bimap::*;
 
-pub fn new<'a>()-> SppMapper<'a> {
-    SppMapper {
-        mp: bimap::BiMap::new(),
-        cnt: 0
-    }
-}
-
 pub struct SppMapper<'a> {
     mp: BiMap<u16, &'a str>,
     cnt: u16
+}
+
+impl SppMapper {
+    pub fn new<'a>()-> SppMapper<'a> {
+        SppMapper {
+            mp: bimap::BiMap::new(),
+            cnt: 0
+        }
+    }
 }
 
 impl <'a> SppMapper<'a> {

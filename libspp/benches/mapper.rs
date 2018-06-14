@@ -6,7 +6,7 @@ use test::*;
 
 #[bench]
 fn mapper_define(b: &mut Bencher) {
-    let mut mapper = libspp::mapper::new();
+    let mut mapper = libspp::mapper::SppMapper::new();
     b.iter(|| {
         mapper.define_string_id("test");
     })
@@ -14,7 +14,7 @@ fn mapper_define(b: &mut Bencher) {
 
 #[bench]
 fn mapper_get(b: &mut Bencher) {
-    let mapper = libspp::mapper::new();
+    let mapper = libspp::mapper::SppMapper::new();
     b.iter(|| {
         mapper.string_to_integer("test");
         mapper.integer_to_string(0);
